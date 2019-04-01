@@ -1,24 +1,20 @@
 package controllers
 
-import connectors.Connector
+import connectors.UserDetailsConnector
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits._
 
-object Controller extends App {
+object UserDetailsController {
 
   val id: String = "id1"
 
-  val connector: Connector = Connector
+  val connector: UserDetailsConnector = UserDetailsConnector
 
   // Return formatted String with "<name> - <job role> - <salary>
 
   //TODO implement using maps (Not for yield)
   def getUserDetailsWithMap: Future[String] = ???
   def getUserDetailsWithFor: Future[String] = ???
-
-  // Uncomment these to see the output of your methods respectively
-  //getUserDetailsWithMap.map(println)
-  //getUserDetailsWithFor.map(println)
 
 }

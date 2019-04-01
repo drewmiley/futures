@@ -4,7 +4,7 @@ import models.Name
 
 import scala.concurrent.Future
 
-trait Connector {
+trait UserDetailsConnector {
 
   def getName(id: String): Future[Name] = {
     Future.successful(Name("Luke", "Skywalker"))
@@ -19,4 +19,4 @@ trait Connector {
   }
 }
 
-object Connector extends Connector
+object UserDetailsConnector extends UserDetailsConnector

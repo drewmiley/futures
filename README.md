@@ -10,5 +10,4 @@ The expected result is: `"Luke Skywalker - Jedi - 0"`
 The methods to use to get this data are in the connector wrapped in futures. These methods represent calls to an API for data.
 
 ## Running
-To run this, you must uncomment the call at the bottom of your controller
-To see the output, run `sbt run` in the console of your project.
+To run this, just use `sbt test`
