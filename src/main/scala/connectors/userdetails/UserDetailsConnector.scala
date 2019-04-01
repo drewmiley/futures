@@ -1,4 +1,4 @@
-package connectors
+package connectors.userdetails
 
 import models.Name
 

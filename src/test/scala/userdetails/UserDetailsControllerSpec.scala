@@ -1,4 +1,6 @@
-import controllers.UserDetailsController
+package userdetails
+
+import controllers.userdetails.UserDetailsController
 import org.scalatest.{Matchers, WordSpec}
 
 import scala.concurrent.Await

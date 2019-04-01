@@ -1,9 +1,8 @@
-package controllers
+package controllers.userdetails
 
-import connectors.UserDetailsConnector
+import connectors.userdetails.UserDetailsConnector
 
 import scala.concurrent.Future
-import scala.concurrent.ExecutionContext.Implicits._
 
 object UserDetailsController {
 
