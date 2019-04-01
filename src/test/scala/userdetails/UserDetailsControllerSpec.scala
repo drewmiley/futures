@@ -19,6 +19,4 @@ class UserDetailsControllerSpec extends WordSpec with Matchers {
       Await.result(UserDetailsController.getUserDetailsWithFor, Duration.Inf) shouldBe "Luke Skywalker - Jedi - 0"
     }
   }
-
-
 }
