@@ -8,6 +8,9 @@ The second method should be completed using a `for` - `yield` comprehension
 Both methods should output the same result.
 The methods to use to get this data are in the connector wrapped in futures. These methods represent calls to an API for data.
 
+## Logging
+There is a logger in utils that can be used where necessary
+
 ### Activity 1 - User Details
 Complete both methods. The expected result is: `"Luke Skywalker - Jedi - 0"`
 
