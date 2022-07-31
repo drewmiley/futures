@@ -15,7 +15,14 @@ object UserDetailsController {
 
   //TODO implement using maps (Not for yield)
   def getUserDetailsWithMap: Future[String] = {
-    Future.successful("NOT YET")
+    val id: String = "id"
+    connector.getJobRole(id).flatMap(jobRole => {
+      connector.getName(id).flatMap(name => {
+        connector.getSalary(name).flatMap(salary => {
+          Future.successful(List(name, jobRole, salary.toString).mkString(" - "))
+        })
+      })
+    })
   }
 
   def getUserDetailsWithFor: Future[String] = {
