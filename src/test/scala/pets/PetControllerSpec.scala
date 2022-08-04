@@ -14,7 +14,7 @@ import org.mockito.Mockito.when
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 
-class PetControllerSpec extends  WordSpec with Matchers with MockitoSugar with ScalaFutures {
+class PetControllerSpec extends WordSpec with Matchers with MockitoSugar with ScalaFutures {
 
   "getStockPrice" when {
     "A PetNotFoundException is thrown" should {
