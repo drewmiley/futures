@@ -17,7 +17,10 @@ trait StockPriceController {
       connector.getStockPrice(company).flatMap(stockPrice => {
         Future.successful(s"Company: ${company.name}; Stock price: £$stockPrice")
       })
-    })
+    }).recover {
+      case _: CompanyNotFoundException => "Company not found"
+      case _: Exception => "An error has occurred"
+    }
   }
 
   def getStockPriceWithFor: Future[String] = {
