@@ -14,12 +14,10 @@ trait PetController {
   //TODO Implement using map and flatMap
   def getPriceOfPet(id: String): Future[Double] = {
     connector.getPet(petId).flatMap(pet => {
-      connector.getPrice(pet).flatMap(price => {
-        Future.successful(1D)
-      })
+      connector.getPrice(pet).flatMap(Future.successful)
     }).recover {
-      case _: PetNotFoundException => 1D
-      case _: Exception => 1D
+      case _: PetNotFoundException => 0
+      case _: Exception => 0
     }
   }
 
@@ -30,8 +28,8 @@ trait PetController {
       price <- connector.getPrice(pet)
     } yield price
     petPrice recover {
-      case _: PetNotFoundException => 1
-      case _: Exception => 1
+      case _: PetNotFoundException => 0
+      case _: Exception => 0
     }
   }
 
