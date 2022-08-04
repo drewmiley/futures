@@ -24,10 +24,14 @@ trait StockPriceController {
   }
 
   def getStockPriceWithFor: Future[String] = {
-    for {
+    val stockPrice: Future[String] = for {
       company <- connector.getCompany(companyID)
       stockPrice <- connector.getStockPrice(company)
     } yield s"Company: ${company.name}; Stock price: £$stockPrice"
+    stockPrice recover {
+      case _: CompanyNotFoundException => "Company not found"
+      case _: Exception => "An error has occurred"
+    }
   }
 
 }
