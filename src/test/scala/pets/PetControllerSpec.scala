@@ -16,7 +16,7 @@ import scala.concurrent.{Await, Future}
 
 class PetControllerSpec extends WordSpec with Matchers with MockitoSugar with ScalaFutures {
 
-  "getStockPrice" when {
+  "getPriceOfPet" when {
     "A PetNotFoundException is thrown" should {
       "return 0" in {
         val returnPet = Pet("Name", Dog)

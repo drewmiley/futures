@@ -8,13 +8,15 @@ import scala.concurrent.Future
 trait PetController {
 
   val connector: PetConnector = PetConnector
-  val applyDiscount: Boolean = true
+  val applyDiscount: Boolean
   val petId = "1"
 
   //TODO Implement using map and flatMap
   def getPriceOfPet(id: String): Future[Double] = {
     connector.getPet(petId).flatMap(pet => {
-      connector.getPrice(pet).flatMap(Future.successful)
+      connector.getPrice(pet).flatMap(price => {
+        Future.successful(if (applyDiscount) 0.9 * price else price)
+      })
     }).recover {
       case _: PetNotFoundException => 0
       case _: Exception => 0
@@ -26,7 +28,7 @@ trait PetController {
     val petPrice: Future[Double] = for {
       pet <- connector.getPet(petId)
       price <- connector.getPrice(pet)
-    } yield price
+    } yield if (applyDiscount) 0.9 * price else price
     petPrice recover {
       case _: PetNotFoundException => 0
       case _: Exception => 0
@@ -34,5 +36,3 @@ trait PetController {
   }
 
 }
-
-object PetController extends PetController
