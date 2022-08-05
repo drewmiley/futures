@@ -2,6 +2,7 @@ package controllers.pets
 
 import connectors.pets.{PetConnector, PetNotFoundException}
 
+import java.io.FileNotFoundException
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
@@ -19,7 +20,7 @@ trait PetController {
       })
     }).recover {
       case _: PetNotFoundException => 0
-      case _: Exception => 0
+      case _: FileNotFoundException => throw new FileNotFoundException()
     }
   }
 
@@ -31,7 +32,7 @@ trait PetController {
     } yield if (applyDiscount) 0.9 * price else price
     petPrice recover {
       case _: PetNotFoundException => 0
-      case _: Exception => 0
+      case _: FileNotFoundException => throw new FileNotFoundException()
     }
   }
 
