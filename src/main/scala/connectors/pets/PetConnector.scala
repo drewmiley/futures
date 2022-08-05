@@ -1,6 +1,6 @@
 package connectors.pets
 
-import models.pets.{Dog, Pet}
+import models.pets.Pet
 
 import scala.concurrent.Future
 
@@ -12,5 +12,3 @@ trait PetConnector {
 }
 
 sealed class PetNotFoundException extends Exception("Pet not found")
-
-object PetConnector extends PetConnector

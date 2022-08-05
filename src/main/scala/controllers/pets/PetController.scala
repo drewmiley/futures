@@ -8,7 +8,7 @@ import scala.concurrent.Future
 
 trait PetController {
 
-  val connector: PetConnector = PetConnector
+  val connector: PetConnector
   val applyDiscount: Boolean
   val petId = "1"
 
