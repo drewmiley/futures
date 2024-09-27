@@ -14,7 +14,23 @@ object UserDetailsController {
   // Return formatted String with "<name> - <job role> - <salary>
 
   //TODO implement using maps (Not for yield)
-  def getUserDetailsWithMap: Future[String] = ???
+  def getUserDetailsWithMap: Future[String] = {
+    val id: String = "id"
+    connector.getJobRole(id).flatMap(jobRole => {
+      connector.getName(id).flatMap(name => {
+        connector.getSalary(name).flatMap(salary => {
+          Future.successful(List(name, jobRole, salary.toString).mkString(" - "))
+        })
+      })
+    })
+  }
 
-  def getUserDetailsWithFor: Future[String] = ???
+  def getUserDetailsWithFor: Future[String] = {
+    val id: String = "id"
+    for {
+      jobRole <- connector.getJobRole(id)
+      name <- connector.getName(id)
+      salary <- connector.getSalary(name)
+    } yield List(name, jobRole, salary.toString).mkString(" - ")
+  }
 }
